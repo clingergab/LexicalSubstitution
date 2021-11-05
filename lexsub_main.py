@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 import sys
-
 from lexsub_xml import read_lexsub_xml
 from lexsub_xml import Context 
-
-# suggested imports 
 from nltk.corpus import wordnet as wn
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -168,7 +165,7 @@ class Word2VecSubst(object):
 
         return max(simil, key=simil.get)
     
-    def predictFromGroup(self, context, group): #part 6
+    def predictFromGroup(self, context, group): 
         simil = {}
         candidates = get_candidates(context.lemma, context.pos)
         for syn in group:
@@ -191,7 +188,7 @@ class Word2VecSubst(object):
 
         return max(simil, key=simil.get)
 
-    def lesk2Vec(self, context): # this method is for part 6
+    def lesk2Vec(self, context):
         
         overLap = []
         
@@ -240,16 +237,11 @@ class BertPredictor(object):
             if token in candidates:
                 return token
 
-        return None # replace for part 5
+        return None 
 
     
 
 if __name__=="__main__":
-
-    # For part 6 I wrote the lesk2Vec method in the Word2VecSubst class. In it I tried adding context to the Word2Vec model by combining it 
-    # with the Lesk algorithm to generate a larger bag of words for Word2Vec to select from. Also I added Hypernyms themselves and their 
-    # lexemes to the definition. However none of it added or took away from my precision. All three part4, part5, and part6 got the same results.
-
 
     #W2VMODEL_FILENAME = 'GoogleNews-vectors-negative300.bin.gz'
     #predictor = Word2VecSubst(W2VMODEL_FILENAME)
